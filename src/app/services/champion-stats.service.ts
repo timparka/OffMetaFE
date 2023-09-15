@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ChampionStatsService {
-  private apiUrl = 'http://localhost:8080/api/participant';
+  private apiUrl = 'http://3.88.117.135:8080/api/participant';
   private championData?: OffMetaDTO;
 
   constructor(private http: HttpClient) { }
