@@ -39,4 +39,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: us-east-2
       run: |
-        aws s3 sync dist/portfolio s3://timparkaportfolio --delete --debug
+        aws s3 sync dist/off-meta-fe s3://timparkaoffmetafe --delete --debug
