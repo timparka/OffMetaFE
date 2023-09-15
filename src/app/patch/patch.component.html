@@ -1,0 +1,17 @@
+<div class=" h-screen relative isolate px-6 lg:px-8 overflow-hidden">
+    <header class="absolute inset-x-0 top-0 z-50">
+
+    <app-navbar></app-navbar>
+    
+    <div class="patch-container flex justify-center items-center h-screen">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-1/3 h-1/6 -translate-y-36">
+            <h2 class="text-center text-2xl mb-4">Current Patch: {{ currentPatch }}</h2>
+            <p class="text-center">
+              Heads up, users! The data you see here comes straight from the top solo queue players in NA League of Legends. 
+              But keep in mind, it might not always be super up-to-date. Why? Well, Riot Games only lets me pull so much data at once, and I've got some storage limits too.
+              Good news is, the website refreshes the data every Sunday, and whenever there's a new patch, you'll see completely new data.
+            </p>
+        </div>
+    </div>
+</header>
+</div>
