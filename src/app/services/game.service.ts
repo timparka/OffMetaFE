@@ -11,7 +11,7 @@ export class GameService {
   constructor(private http: HttpClient) { }
 
   getCurrentPatch(): Observable<string> {
-    return this.http.get<string>('http://3.88.117.135:8080/api/user/currentPatch', { responseType: 'text' as 'json' });
+    return this.http.get<string>('http://34.236.185.126:8080/api/user/currentPatch', { responseType: 'text' as 'json' });
   }
 
 }
