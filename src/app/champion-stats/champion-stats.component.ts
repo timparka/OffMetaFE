@@ -17,6 +17,7 @@ export class ChampionStatsComponent implements OnInit {
   itemImageUrls: string[] = [];
   summonerSpell1ImageUrl?: string;
   summonerSpell2ImageUrl?: string;
+  isLoading: boolean = true;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -27,6 +28,8 @@ export class ChampionStatsComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.route.queryParams.subscribe(params => {
       if (params['selectedRole']) {
         Promise.resolve().then(() => {
@@ -94,9 +97,17 @@ export class ChampionStatsComponent implements OnInit {
       // Add this line to update the images when the role data changes.
       this.dataDragonService.version$.subscribe(version => {
         this.updateImages(version);
+        this.isLoading = false; 
       });
   
       this.router.navigate(['/champion-stats'], { queryParams: { selectedRole: role } });
-    });
+      this.isLoading = false;
+    },
+    error => {
+      console.error("Error fetching data:", error);
+      // Set isLoading to false even if an error occurs
+      this.isLoading = false;
+    }
+  );
   }
 }
