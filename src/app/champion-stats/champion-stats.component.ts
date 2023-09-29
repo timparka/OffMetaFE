@@ -5,6 +5,7 @@ import { DataDragonService } from '../services/data-dragon.service';
 import { ActivatedRoute } from '@angular/router';
 import { ChampionStatsService } from '../services/champion-stats.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-champion-stats',
@@ -17,7 +18,6 @@ export class ChampionStatsComponent implements OnInit {
   itemImageUrls: string[] = [];
   summonerSpell1ImageUrl?: string;
   summonerSpell2ImageUrl?: string;
-  isLoading: boolean = true;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -25,11 +25,10 @@ export class ChampionStatsComponent implements OnInit {
     private championStatsService: ChampionStatsService,
     private router: Router,
     private dataDragonService: DataDragonService,
+    private loaderService: LoaderService
   ) {}
   
   ngOnInit(): void {
-    this.isLoading = true;
-
     this.route.queryParams.subscribe(params => {
       if (params['selectedRole']) {
         Promise.resolve().then(() => {
@@ -84,6 +83,7 @@ export class ChampionStatsComponent implements OnInit {
   }
 
   onRoleClick(role: string): void {
+    this.loaderService.setLoading(true);
     this.championStatsService.getChampionStatsByRole(role).subscribe(data => {
       console.log('Data received:', data);
       this.data = data;
@@ -97,17 +97,10 @@ export class ChampionStatsComponent implements OnInit {
       // Add this line to update the images when the role data changes.
       this.dataDragonService.version$.subscribe(version => {
         this.updateImages(version);
-        this.isLoading = false; 
       });
   
       this.router.navigate(['/champion-stats'], { queryParams: { selectedRole: role } });
-      this.isLoading = false;
-    },
-    error => {
-      console.error("Error fetching data:", error);
-      // Set isLoading to false even if an error occurs
-      this.isLoading = false;
-    }
-  );
+      this.loaderService.setLoading(false);
+    });
   }
 }

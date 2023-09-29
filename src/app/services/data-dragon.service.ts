@@ -34,10 +34,10 @@ export class DataDragonService {
     }
 
     public getItemImageUrl(version: string, itemId: string): string {
-        return `http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemId}.png`;
+        return `http://ddragon.leagueoflegends.com/cdn/${version.trim()}/img/item/${itemId}.png`;
     }
-
+    
     public getSummonerSpellImageUrl(version: string, spellName: string): string {
-        return `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/Summoner${spellName}.png`;
+        return `http://ddragon.leagueoflegends.com/cdn/${version.trim()}/img/spell/Summoner${spellName}.png`;
     }
 }

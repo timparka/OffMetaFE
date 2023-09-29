@@ -5,6 +5,7 @@ import { ChampionStatsComponent } from './champion-stats/champion-stats.componen
 import { AboutComponent } from './about/about.component';
 import { PatchComponent } from './patch/patch.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
