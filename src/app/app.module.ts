@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; // Add HTTP_INTERCEPTORS
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ChampionStatsComponent } from './champion-stats/champion-stats.component';
@@ -11,7 +11,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PatchComponent } from './patch/patch.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { LoadingInterceptor } from './loading.interceptor'; // Import your interceptor
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,12 @@ import { LoadingInterceptor } from './loading.interceptor'; // Import your inter
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule, // Keep this import
+    AppRoutingModule,
     NgxSpinnerModule,
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true // Add your interceptor here
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
     }
   ],
   bootstrap: [AppComponent]
