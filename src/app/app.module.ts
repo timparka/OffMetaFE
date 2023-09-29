@@ -4,7 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ChampionStatsComponent } from './champion-stats/champion-stats.component';
-import { AppRoutingModule } from './app-routing.module'; // Keep this import
+import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
